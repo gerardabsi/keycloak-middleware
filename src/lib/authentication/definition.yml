@@ -1,0 +1,143 @@
+definitions:
+  authenticationRequest:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+    example:
+      username: testuser@test.com
+      password: password
+
+  refreshTokenRequest:
+    type: object
+    properties:
+      refresh_token:
+        type: string
+    example:
+      refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjOTM2ZWZjYS1jMTM3LTQyZWUtOWY2Zi1jNjkwNzg2NzIwN2MifQ.eyJleHAiOjE1OTc3NjA1MjMsImlhdCI6MTU5Nzc1ODcyMywianRpIjoiZGFmNTMzMDktMWMyOS00NTM4LWEzOWEtOGI2NmFkMDk1YWE0IiwiaXNzIjoiaHR0cDovLzUxLjY4LjE3My4xNzY6ODE4MC9hdXRoL3JlYWxtcy9hbHFhYmFzIiwiYXVkIjoiaHR0cDovLzUxLjY4LjE3My4xNzY6ODE4MC9hdXRoL3JlYWxtcy9hbHFhYmFzIiwic3ViIjoiMjVmM2Q3ZDEtMjYxNS00YTkxLTgxNmQtODNkMmFiMmJlNjEyIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImFscWFiYXMtaWRwIiwic2Vzc2lvbl9zdGF0ZSI6IjZjMmJhYWM0LTQzNzgtNGQxOC04MGNhLWE3MDNhZTJiZGY4MyIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSJ9.0byx8ZgoO32nQpUoc5Ea7HTly3bBkQtLsUN5xhheUH0
+
+  authenticationObject:
+    type: object
+    properties:
+      accessToken:
+        type: string
+      expires_in:
+        type: number
+      refresh_expires_in:
+        type: number
+      refresh_token:
+        type: string
+      token_type:
+        type: string
+      not-before-policy:
+        type: number
+      session_state:
+        type: string
+      scope:
+        type: string
+    example:
+      accessToken: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGYUJCUE14UWgyakdYQVJFaGRXQjNwWFZNeWcxZUY0Nkc4M0dUMGh4UW5JIn0.eyJleHAiOjE1OTc3NTc1ODIsImlhdCI6MTU5Nzc1NzI4MiwianRpIjoiYTVhYjBjZTMtNjZkOC00Yzg3LThmNDktMWJjN2ZjNTQ2OTc5IiwiaXNzIjoiaHR0cDovLzUxLjY4LjE3My4xNzY6ODE4MC9hdXRoL3JlYWxtcy9hbHFhYmFzIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjI1ZjNkN2QxLTI2MTUtNGE5MS04MTZkLTgzZDJhYjJiZTYxMiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFscWFiYXMtaWRwIiwic2Vzc2lvbl9zdGF0ZSI6Ijk4ZGUwMTRkLTk0YWUtNDYxOC05NDM5LWQwODQ3Yjc4YjU5NSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiVGVzdCBVc2VyIiwicGhvbmVfbnVtYmVyIjoiKzk2MTM2MjIzMzYiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0ZXN0dXNlckB0ZXN0LmNvbSIsImdpdmVuX25hbWUiOiJUZXN0IiwiZmFtaWx5X25hbWUiOiJVc2VyIiwicGljdHVyZSI6Imh0dHBzOi8vc2NvbnRlbnQuZmJleTQtMS5mbmEuZmJjZG4ubmV0L3YvdDEuMC05LzgyOTY1MDkxXzEwMTU3MTMzNDAxNzE4NDM1XzYxNTkxMDU3MTUxOTAzNjYyMDhfbi5qcGc_X25jX2NhdD0xMDYmX25jX3NpZD0wOWNiZmUmX25jX29oYz1jbjdrR093SzNRNEFYLWFKM0FuJl9uY19odD1zY29udGVudC5mYmV5NC0xLmZuYSZvaD0zZmU4ZWFkNzJiM2NjOTNiMGM5NGRmOGRlNTBmNzZlMyZvZT01RjYxMTFGMCIsImVtYWlsIjoidGVzdHVzZXJAdGVzdC5jb20ifQ.Ztwc_BSF9zpt4UYkL9xf4dBeoM8NjawtS3PsJf-H-w7pCZWknml3sWHpZfzjM32yvzPnVyRIZSft6V4PXmOuTzp-NrsMWvbyV0vohiTL9rbKqTV7X4vONBe5alGeOGmXx-0BPQlllTLGk6frkY6qHU0bkoJx6H6QMb2mZVV6IVYHJaxs0kw0U8qObws8un6-idMFKehx9ztFPMOnC4BXl3sdIY95lnxyLb0d_vsUbFGAO7aAeezaagIOrrSquy-fV_mkLYMqVhKoH3CysqZtJcAD-qV8jeonaDu6NPTFHtVPOqfshQoEz4-sTDJVbUVRFBxcnb2Co8ByfiENM12Ouw
+      expires_in: 300
+      refresh_expires_in: 1800
+      refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjOTM2ZWZjYS1jMTM3LTQyZWUtOWY2Zi1jNjkwNzg2NzIwN2MifQ.eyJleHAiOjE1OTc3NTkwODIsImlhdCI6MTU5Nzc1NzI4MiwianRpIjoiMzBkYTczM2QtZWRkNi00OTQ2LWFjYTYtOTdlNWJlYmI3MWE4IiwiaXNzIjoiaHR0cDovLzUxLjY4LjE3My4xNzY6ODE4MC9hdXRoL3JlYWxtcy9hbHFhYmFzIiwiYXVkIjoiaHR0cDovLzUxLjY4LjE3My4xNzY6ODE4MC9hdXRoL3JlYWxtcy9hbHFhYmFzIiwic3ViIjoiMjVmM2Q3ZDEtMjYxNS00YTkxLTgxNmQtODNkMmFiMmJlNjEyIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImFscWFiYXMtaWRwIiwic2Vzc2lvbl9zdGF0ZSI6Ijk4ZGUwMTRkLTk0YWUtNDYxOC05NDM5LWQwODQ3Yjc4YjU5NSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSJ9.VI-O9HO1Id_mj2iGe7D-TPQczJJoznXHZIBg1-VS-GQ
+      token_type: bearer
+      not-before-policy: 0
+      session_state: 98de014d-94ae-4618-9439-d0847b78b595
+      scope: email profile
+  groupsObject:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      subGroups:
+        type: array
+        items:
+          type: string
+    example:
+      id: 5b5c6aaa-df10-4261-9dc1-69426c0be7de
+      name: Subscribers
+      path: /Subscribers
+      subGroups: []
+
+tags:
+  name: Authentication
+  description: users authentication
+
+paths:
+  /auth/v1/authenticate:
+    post:
+      description: Authenticate User
+      tags: [Authentication]
+      produces:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          x-www-form-urlencoded:
+            schema:
+              $ref: "#/definitions/authenticationRequest"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/authenticationObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
+    put:
+      description: Refresh User Token
+      tags: [Authentication]
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          x-www-form-urlencoded:
+            schema:
+              $ref: "#/definitions/refreshTokenRequest"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/authenticationObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
+
+  /auth/v1/validateToken:
+    get:
+      description: Check User Token
+      tags: [Authentication]
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Valid Token
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error

@@ -1,0 +1,152 @@
+definitions:
+  userInfoObject:
+    type: object
+    properties:
+      sub:
+        type: string
+      email_verified:
+        type: boolean
+      name:
+        type: sting
+      phone_number:
+        type: string
+      preferred_username:
+        type: string
+      given_name-policy:
+        type: string
+      family_name:
+        type: string
+      picture:
+        type: string
+      email:
+        type: string
+    example:
+      sub: 25f3d7d1-2615-4a91-816d-83d2ab2be612
+      email_verified: true
+      name: Test User
+      phone_number: +9613622336
+      preferred_username: testuser@test.com
+      given_name: Test
+      family_name: User
+      picture: https://scontent.fbey4-1.fna.fbcdn.net/v/t1.0-9/82965091_10157133401718435_6159105715190366208_n.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=cn7kGOwK3Q4AX-aJ3An&_nc_ht=scontent.fbey4-1.fna&oh=3fe8ead72b3cc93b0c94df8de50f76e3&oe=5F6111F0
+      email: testuser@test.com
+
+  createUserObject:
+    type: object
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      type:
+        type: type
+    example:
+      email: testuser@test.com
+      firstName: Test
+      lastName: User
+      password: password
+      type: subscriber
+
+  changePasswordObject:
+    type: object
+    properties:
+      password:
+        type: string
+    example:
+      password: password
+
+tags:
+  name: User
+  description: user management
+
+paths:
+  /auth/v1/user:
+    get:
+      description: Get User Info
+      tags: [User]
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/userInfoObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
+    put:
+      description: Create User
+      tags: [User]
+      produces:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          x-www-form-urlencoded:
+            schema:
+              $ref: "#/definitions/createUserObject"
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad Request
+        500:
+          description: Unexpected error
+
+  /auth/v1/changePassword/{userId}:
+    put:
+      description: Change User Password
+      tags: [User]
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: User ID
+          required: true
+          type: string
+      requestBody:
+        required: true
+        content:
+          x-www-form-urlencoded:
+            schema:
+              $ref: "#/definitions/changePasswordObject"
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad Request
+        500:
+          description: Unexpected error
+  /auth/v1/verify/{userId}:
+    put:
+      description: Verify User
+      tags: [User]
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: User ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: User Verified
+        400:
+          description: Bad Request
+        500:
+          description: Unexpected error

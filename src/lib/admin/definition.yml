@@ -1,0 +1,128 @@
+definitions:
+  userObject:
+    type: object
+    properties:
+      id:
+        type: string
+      createdTimestamp:
+        type: number
+      username:
+        type: string
+      enabled:
+        type: boolean
+      totp:
+        type: boolean
+      emailVerified:
+        type: boolean
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      requiredActions:
+        type: array
+        items:
+          type: string
+
+    example:
+      id: 25f3d7d1-2615-4a91-816d-83d2ab2be612
+      createdTimestamp: 1597751356913
+      username: testuser@test.com
+      enabled: true
+      totp: false
+      emailVerified: true
+      firstName: Test
+      lastName: Test
+      email: testuser@test.com
+      requiredActions: [VERIFY_EMAIL,UPDATE_PASSWORD]
+
+  groupsObject:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      subGroups:
+        type: array
+        items:
+          type: string
+    example:
+      id: 5b5c6aaa-df10-4261-9dc1-69426c0be7de
+      name: Subscribers
+      path: /Subscribers
+      subGroups: []
+
+tags:
+  name: Administration
+  description: user management api calls
+
+paths:
+  /auth/v1/admin/users:
+    get:
+      description: Get all list of users
+      tags: [Administration]
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/definitions/userObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
+
+  /auth/v1/admin/groups:
+    get:
+      description: Get list of groups
+      tags: [Administration]
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/definitions/groupsObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
+
+  /auth/v1/admin/groups/{groupId}:
+    get:
+      description: Get all list of users
+      tags: [Administration]
+      produces:
+        - application/json
+      parameters:
+        - name: groupId
+          in: path
+          description: Group ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/definitions/userObject"
+        401:
+          description: UnAuthorized
+        500:
+          description: Unexpected error
